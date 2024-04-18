@@ -9,3 +9,9 @@ RUN npm install
 COPY . .
 
 CMD ["npm", "run", "dev", "--host 0.0.0.0" ]
+
+FROM nginx:1.19.0
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY . .
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
