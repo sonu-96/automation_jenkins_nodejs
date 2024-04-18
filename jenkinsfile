@@ -1,1 +1,25 @@
+pipeline {
+    agent any
 
+    stages {
+        stage('git clone') {
+            steps {
+                git "https://github.com/sonu-96/automation_jenkins_nodejs.git"
+            }
+        }
+        stage('build') {
+            steps {
+                sh "docker build -t sonu96/react-vite:1.$BUILD_NUMBER ."
+                sh "docker images"
+            }
+        }
+        stage('push and run') {
+            steps {
+                sh "docker login -u $username -p $password"
+                sh "docker push sonu96/react-vite:1.$BUILD_NUMBER"
+                sh "docker rm -f myreactapp"
+                sh "docker run -itd --name myreactapp -p 2000:3141 --host 0.0.0.0 sonu96/react-vite:1.$BUILD_NUMBER"
+            }
+        }
+    }
+}
