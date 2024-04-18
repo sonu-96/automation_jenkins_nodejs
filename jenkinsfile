@@ -18,7 +18,7 @@ pipeline {
                 sh "docker login -u $username -p $password"
                 sh "docker push sonu96/react-vite:1.$BUILD_NUMBER"
                 sh "docker rm -f myreactapp"
-                sh "docker run -itd --name myreactapp -p 2000:3141 sonu96/react-vite:1.$BUILD_NUMBER"
+                sh "docker run -itd --name myreactapp -p 3000:5173 sonu96/react-vite:1.$BUILD_NUMBER"
             }
         }
     }
