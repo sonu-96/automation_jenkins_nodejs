@@ -10,6 +10,4 @@ COPY . .
 
 EXPOSE 3000
 
-RUN npm run start:buid
-
-CMD ["npm", "start:server", "run", "dev"]
+CMD ["npm", "start", "run", "dev"]
