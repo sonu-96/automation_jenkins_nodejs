@@ -14,5 +14,5 @@ CMD ["npm", "start", "dev"]
 FROM nginx:latest
 WORKDIR /use/share/nginx/html
 RUN rm -rf ./*
-COPY --from=builder /app/build .
+COPY --from=builder . .
 ENTRYPOINT ["nginx", "-g", "deamon off" ]
