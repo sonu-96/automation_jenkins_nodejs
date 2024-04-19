@@ -8,4 +8,8 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "start", "dev"]
+EXPOSE 3000
+
+RUN npm run start:buid
+
+CMD ["npm", "start:server", "run", "dev"]
